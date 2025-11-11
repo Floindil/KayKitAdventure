@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://tlp4yr1cvq2n"]
+
+[ext_resource type="PackedScene" uid="uid://c7qr2d5omejpq" path="res://assets/maps/dungeon.tscn" id="2_7n6i2"]
+[ext_resource type="PackedScene" uid="uid://83fkukns3bev" path="res://player/Player.tscn" id="2_fdcd7"]
+[ext_resource type="PackedScene" uid="uid://cgeeiucebrmy6" path="res://scenens/ui/Inventory/Inventory.tscn" id="3_l2km6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7n6i2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_fdcd7"]
+sky_material = SubResource("ProceduralSkyMaterial_7n6i2")
+
+[sub_resource type="Environment" id="Environment_qhs2s"]
+background_mode = 2
+sky = SubResource("Sky_fdcd7")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qhs2s")
+
+[node name="Dungeon" parent="." instance=ExtResource("2_7n6i2")]
+
+[node name="Player" parent="." instance=ExtResource("2_fdcd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90886, 0)
+
+[node name="InGameUI" parent="." instance=ExtResource("3_l2km6")]
+visible = false

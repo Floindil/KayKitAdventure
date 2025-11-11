@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0obw85snwqtd"]
+
+[ext_resource type="Theme" uid="uid://co05eowdfhtif" path="res://scenens/ui/theme.tres" id="1_m3v0v"]
+[ext_resource type="Script" uid="uid://dk0resxuns66x" path="res://scenens/ui/ContextMenu/context_menu.gd" id="2_m3v0v"]
+[ext_resource type="Texture2D" uid="uid://c22jspx1hffjd" path="res://assets/ui/borders/12_Border_01-removebg-preview.png" id="4_ijjx2"]
+
+[node name="ItemContext" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_m3v0v")
+script = ExtResource("2_m3v0v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Border" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_ijjx2")
+region_rect = Rect2(64, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8

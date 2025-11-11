@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://20ad6syuxjna"]
+
+[ext_resource type="Texture2D" uid="uid://bxyvp7ctbvcu2" path="res://assets/ui/borders/06_Border_01-removebg-preview.png" id="1_4j8h0"]
+[ext_resource type="Script" uid="uid://c485uo66fjm6k" path="res://scenens/ui/ContextMenu/selectable_option.gd" id="1_ecbwi"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 101.0
+offset_bottom = 24.0
+script = ExtResource("1_ecbwi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 1
+
+[node name="text" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Highlight" type="NinePatchRect" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_4j8h0")
+region_rect = Rect2(256, 128, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="SelectableOption" type="Control" parent="MarginContainer"]
+layout_mode = 2

@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgeeiucebrmy6"]
+
+[ext_resource type="Script" uid="uid://bnftk58wholsd" path="res://scenens/ui/Inventory/inventory.gd" id="1_wpo16"]
+[ext_resource type="Theme" uid="uid://co05eowdfhtif" path="res://scenens/ui/theme.tres" id="1_ygq7k"]
+[ext_resource type="Texture2D" uid="uid://e625plnoyg56" path="res://assets/ui/borders/03_Border_01-removebg-preview.png" id="2_2415f"]
+[ext_resource type="Texture2D" uid="uid://b8t5haspas8mn" path="res://assets/ui/stone_bg.png" id="2_wpo16"]
+[ext_resource type="PackedScene" uid="uid://qkm1sla80ib2" path="res://scenens/ui/Inventory/Slot.tscn" id="5_f6fl8"]
+[ext_resource type="PackedScene" uid="uid://d0obw85snwqtd" path="res://scenens/ui/ContextMenu/ContextMenu.tscn" id="5_wgv8w"]
+[ext_resource type="Script" uid="uid://bwi6lqva43ka7" path="res://scenens/ui/ContextMenu/context_option_data.gd" id="6_wgv8w"]
+[ext_resource type="PackedScene" uid="uid://20ad6syuxjna" path="res://scenens/ui/ContextMenu/SelectableOption.tscn" id="7_hopkd"]
+
+[sub_resource type="Resource" id="Resource_w1eci"]
+script = ExtResource("6_wgv8w")
+scene = ExtResource("7_hopkd")
+text = "Use"
+metadata/_custom_type_script = "uid://bwi6lqva43ka7"
+
+[sub_resource type="Resource" id="Resource_3xpoe"]
+script = ExtResource("6_wgv8w")
+scene = ExtResource("7_hopkd")
+text = "Equip"
+metadata/_custom_type_script = "uid://bwi6lqva43ka7"
+
+[sub_resource type="Resource" id="Resource_pobrs"]
+script = ExtResource("6_wgv8w")
+scene = ExtResource("7_hopkd")
+text = "Discard"
+metadata/_custom_type_script = "uid://bwi6lqva43ka7"
+
+[sub_resource type="Resource" id="Resource_hopkd"]
+script = ExtResource("6_wgv8w")
+scene = ExtResource("7_hopkd")
+text = "Cancel"
+metadata/_custom_type_script = "uid://bwi6lqva43ka7"
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ygq7k")
+script = ExtResource("1_wpo16")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainSizeControl" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1200, 800)
+layout_mode = 2
+
+[node name="bgBorderMargin" type="MarginContainer" parent="CenterContainer/MainSizeControl"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="bgTexture" type="TextureRect" parent="CenterContainer/MainSizeControl/bgBorderMargin"]
+layout_mode = 2
+texture = ExtResource("2_wpo16")
+expand_mode = 1
+
+[node name="bgBorder" type="NinePatchRect" parent="CenterContainer/MainSizeControl"]
+layout_mode = 2
+texture = ExtResource("2_2415f")
+region_rect = Rect2(128, 0, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="hDivider" type="HBoxContainer" parent="CenterContainer/MainSizeControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MainSizeControl/hDivider"]
+layout_mode = 2
+
+[node name="InventoryListMargin" type="MarginContainer" parent="CenterContainer/MainSizeControl/hDivider"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/InventoryListMargin"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer"]
+layout_mode = 2
+clip_tabs = false
+
+[node name="InventorySizeControl" type="PanelContainer" parent="CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+
+[node name="InventoryList" type="VBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer/InventorySizeControl"]
+layout_mode = 2
+
+[node name="EquipmentMargin" type="MarginContainer" parent="CenterContainer/MainSizeControl/hDivider"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="EquipmentSizeControl" type="PanelContainer" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl"]
+layout_mode = 2
+
+[node name="Helmet" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="Armor" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="Cape" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="Greaves" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="Boots" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="MainHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="OffHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="ItemContext" parent="." instance=ExtResource("5_wgv8w")]
+visible = false
+layout_mode = 2
+offset_left = 629.0
+offset_top = 593.0
+offset_right = 866.0
+offset_bottom = 758.0
+options = Array[ExtResource("6_wgv8w")]([SubResource("Resource_w1eci"), SubResource("Resource_3xpoe"), SubResource("Resource_pobrs"), SubResource("Resource_hopkd")])
+
+[connection signal="tab_button_pressed" from="CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_button_pressed"]

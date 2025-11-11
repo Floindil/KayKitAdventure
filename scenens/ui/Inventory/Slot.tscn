@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://qkm1sla80ib2"]
+
+[ext_resource type="Script" uid="uid://cuqev5624g0r5" path="res://scenens/ui/Inventory/slot.gd" id="1_kgiqx"]
+[ext_resource type="Texture2D" uid="uid://bxyvp7ctbvcu2" path="res://assets/ui/borders/06_Border_01-removebg-preview.png" id="2_kgiqx"]
+
+[node name="Slot" type="HBoxContainer"]
+script = ExtResource("1_kgiqx")
+
+[node name="IconMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureMargin" type="MarginContainer" parent="IconMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="IconPanel" type="PanelContainer" parent="IconMargin/TextureMargin"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="IconTexture" type="TextureRect" parent="IconMargin/TextureMargin"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="IconBorder" type="NinePatchRect" parent="IconMargin"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_kgiqx")
+region_rect = Rect2(192, 64, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="LabelMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 0
+
+[node name="Label" type="Label" parent="LabelMargin"]
+layout_mode = 2
+text = "Testingtext"
