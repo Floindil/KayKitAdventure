@@ -1,7 +1,7 @@
 extends Node
 class_name StaticNames
 
-# Slots
+#region Slots
 const slot_helmet = "Helmet"
 const slot_armor = "Armor"
 const slot_cape = "Cape"
@@ -19,8 +19,9 @@ const slots = {
 	slot_mainhand: null,
 	slot_offhand: null
 	}
+#endregion
 
-# Item Types
+#region Item Types
 const type_weapon = "Weapon"
 const type_armor = "Armor"
 const type_consumables = "Consumable"
@@ -35,8 +36,16 @@ const types_equipment = [
 	type_weapon,
 	type_armor
 ]
+#endregion
 
-# Movesets
+#region Consumable Items
+const consumable_value_type_percentage_current = "PercentageCurrent"
+const consumable_value_type_percentage_max = "PercentageMax"
+const consumable_value_type_int = "Int"
+const consumable_health_bar = "Health"
+#endregion
+
+#region Movesets
 const moveset_fist = "Fist"
 const moveset_straight_sword = "StraightSword"
 const moveset_great_sword = "GreatSword"
@@ -45,8 +54,9 @@ const movesets = [
 	moveset_straight_sword,
 	moveset_great_sword
 	]
+#endregion
 
-# States
+#region States
 const state_idle = "Idle"
 const state_walk = "Walk"
 const state_sprint = "Sprint"
@@ -55,7 +65,9 @@ const state_jump = "Jump"
 const state_falling = "Falling"
 const state_landing = "Landing"
 const state_attack = "Attack"
-	
-# Control Mappings
+#endregion
+
+#region Control Mappings
 const map_menu = "Menu"
 const map_in_game = "InGame"
+#endregion

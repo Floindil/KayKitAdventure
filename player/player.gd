@@ -129,16 +129,30 @@ func _toggle_2h() -> void:
 			off_hand_node.add_child(item)
 
 func _test_action() -> void:
-	var sword: Item = load("res://assets/items/weapons/IronGreatSword.tres")
+	var sword: Item = load("res://assets/items/equipment/weapons/IronGreatSword.tres")
 	self.inventory.add_item(sword)
 
-	var shield: Item = load("res://assets/items/schields/round_shield.tres")
+	var shield: Item = load("res://assets/items/equipment/schields/round_shield.tres")
 	self.inventory.add_item(shield)
 
-	var gs: Item = load("res://assets/items/weapons/IronSword.tres")
+	var gs: Item = load("res://assets/items/equipment/weapons/IronSword.tres")
 	self.inventory.add_item(gs)
+	
+	var poison: ConsumableItem = load("res://assets/items/consumables/weak_poison.tres")
+	poison.amount = 5
+	self.inventory.add_item(poison)
+	self.inventory.add_item(poison)
+	
+	var health_potion: ConsumableItem = load("res://assets/items/consumables/health_potion.tres")
+	health_potion.amount = 5
+	self.inventory.add_item(health_potion)
+	self.inventory.add_item(health_potion)
 
-func equip(item: Item, secondary_slot: int = 0) -> void:
+func use_consumable(item: ConsumableItem) -> void:
+	inventory.remove_item(item)
+	item.run(self, item)
+
+func equip(item: EquipmentItem, secondary_slot: int = 0) -> void:
 	var slot: String = item.primary_slot
 	if secondary_slot:
 		slot = item.secondary_slot
@@ -150,13 +164,13 @@ func equip(item: Item, secondary_slot: int = 0) -> void:
 	_update_equipment_slot(slot, item)
 	
 func unequip(slot: String) -> void:
-	var item: Item = equipment.get_item(slot)
+	var item: EquipmentItem = equipment.get_item(slot)
 	if item:
 		inventory.add_item(item)
 	equipment.unequip(slot)
 	_update_equipment_slot(slot, null)
 
-func _update_equipment_slot(slot: String, item: Item) -> void:
+func _update_equipment_slot(slot: String, item: EquipmentItem) -> void:
 	var node = get_node("Rig/Skeleton3D/%s" % slot)
 	if slot == StaticNames.slot_offhand and two_handed:
 		node = get_node("Rig/Skeleton3D/%s" % StaticNames.slot_back)

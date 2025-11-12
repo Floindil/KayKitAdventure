@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cgeeiucebrmy6"]
 
-[ext_resource type="Script" uid="uid://bnftk58wholsd" path="res://scenens/ui/Inventory/inventory.gd" id="1_wpo16"]
+[ext_resource type="Script" uid="uid://bnftk58wholsd" path="res://scenens/ui/Inventory/inventory_ui.gd" id="1_wpo16"]
 [ext_resource type="Theme" uid="uid://co05eowdfhtif" path="res://scenens/ui/theme.tres" id="1_ygq7k"]
 [ext_resource type="Texture2D" uid="uid://e625plnoyg56" path="res://assets/ui/borders/03_Border_01-removebg-preview.png" id="2_2415f"]
 [ext_resource type="Texture2D" uid="uid://b8t5haspas8mn" path="res://assets/ui/stone_bg.png" id="2_wpo16"]

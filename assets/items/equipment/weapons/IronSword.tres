@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://c6brgwo2xuic6"]
+
+[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_st248"]
+[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/Equipment.gd" id="2_mfoxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st248"]
+atlas = ExtResource("1_st248")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+script = ExtResource("2_mfoxm")
+moveset = "StraightSword"
+primary_slot = "MainHand"
+secondary_slot = "OffHand"
+type = "Weapon"
+name = "Iron Sword"
+asset_path = "res://assets/items/equipment/weapons/1HSword.tscn"
+icon = SubResource("AtlasTexture_st248")
+amount = 1
+metadata/_custom_type_script = "uid://clfui03nj2861"

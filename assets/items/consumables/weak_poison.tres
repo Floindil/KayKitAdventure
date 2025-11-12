@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=5 format=3 uid="uid://b1qxhbh4gmkln"]
+
+[ext_resource type="Script" uid="uid://bdk2hw4hfbp4o" path="res://assets/items/consumables/scripts/value_bar_change.gd" id="1_csyo7"]
+[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="2_7t6yt"]
+[ext_resource type="Script" uid="uid://vnpylbfseg6e" path="res://assets/items/consumables/consumable.gd" id="3_7rwsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbqw6"]
+atlas = ExtResource("2_7t6yt")
+region = Rect2(256, 384, 64, 64)
+
+[resource]
+script = ExtResource("3_7rwsl")
+consumable_script = ExtResource("1_csyo7")
+value = -20
+value_type = "Int"
+value_bar_name = "Health"
+type = "Consumable"
+name = "Weak Poison"
+asset_path = ""
+icon = SubResource("AtlasTexture_nbqw6")
+amount = 1
+metadata/_custom_type_script = "uid://vnpylbfseg6e"
