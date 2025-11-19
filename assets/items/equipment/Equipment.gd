@@ -1,12 +1,7 @@
 extends Item
 class_name EquipmentItem
 
-@export_enum(
-	StaticNames.moveset_fist,
-	StaticNames.moveset_straight_sword,
-	StaticNames.moveset_great_sword
-	)
-var moveset: String
+@export var moveset: Moveset
 @export_enum(
 	StaticNames.slot_helmet,
 	StaticNames.slot_cape,

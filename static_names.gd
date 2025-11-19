@@ -42,18 +42,11 @@ const types_equipment = [
 const consumable_value_type_percentage_current = "PercentageCurrent"
 const consumable_value_type_percentage_max = "PercentageMax"
 const consumable_value_type_int = "Int"
-const consumable_health_bar = "Health"
 #endregion
 
-#region Movesets
-const moveset_fist = "Fist"
-const moveset_straight_sword = "StraightSword"
-const moveset_great_sword = "GreatSword"
-const movesets = [
-	moveset_fist,
-	moveset_straight_sword,
-	moveset_great_sword
-	]
+#region Resource Bars
+const bars_health = "Health"
+const bars_stamina = "Stamina"
 #endregion
 
 #region States
@@ -65,6 +58,7 @@ const state_jump = "Jump"
 const state_falling = "Falling"
 const state_landing = "Landing"
 const state_attack = "Attack"
+const state_exhausted = "Exhausted"
 #endregion
 
 #region Control Mappings

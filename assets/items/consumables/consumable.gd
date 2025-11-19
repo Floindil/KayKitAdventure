@@ -10,7 +10,7 @@ extends Item
 )
 var value_type: String
 @export_enum(
-	StaticNames.consumable_health_bar
+	StaticNames.bars_health
 )
 var value_bar_name: String
 

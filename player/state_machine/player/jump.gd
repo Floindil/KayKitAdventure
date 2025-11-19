@@ -7,6 +7,9 @@ var jump_speed := 10.0
 var gravity := ProjectSettings.get_setting("physics/3d/default_gravity") as float
 
 func enter(_player: Player):
+	super.enter(_player)
+	stamina_cost = StaticValues.stamina_jump_cost * (-1)
+	resource_bars.stamina_bar.update(stamina_cost)
 	_player.can_move = false
 	_player.vulnerable = true
 	_airborne = false

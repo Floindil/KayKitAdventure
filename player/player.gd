@@ -8,8 +8,10 @@ var sprint: bool = false
 var sneak: bool = false
 var vulnerable := false
 
+var moveset_fist: Moveset = load("res://assets/items/equipment/movesets/fist.tres")
+
 @export var two_handed := false
-@export var moveset := StaticNames.moveset_fist
+@export var moveset: Moveset = moveset_fist
 @export var dir: Vector3
 
 # Gameplay vars
@@ -177,7 +179,7 @@ func _update_equipment_slot(slot: String, item: EquipmentItem) -> void:
 	for child in node.get_children():
 		node.remove_child(child)
 		if slot == StaticNames.slot_mainhand:
-			moveset = StaticNames.moveset_fist
+			moveset = moveset_fist
 			
 	if item:
 		var item_scene: PackedScene = load(item.asset_path)
