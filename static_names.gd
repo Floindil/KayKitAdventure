@@ -9,7 +9,7 @@ const slot_greaves = "Greaves"
 const slot_boots = "Boots"
 const slot_mainhand = "MainHand"
 const slot_offhand = "OffHand"
-const slot_back = "Back/Offset" # Unofficial Slot 
+const slot_back = "Back/Offset" # Unofficial Slot
 const slots = {
 	slot_helmet: null,
 	slot_armor: null,
@@ -26,15 +26,18 @@ const type_weapon = "Weapon"
 const type_armor = "Armor"
 const type_consumables = "Consumable"
 const type_key = "Key"
+const type_spell = "Spell"
 const types = [
 	type_weapon,
 	type_armor,
 	type_consumables,
-	type_key
+	type_key,
+	type_spell
 	]
 const types_equipment = [
 	type_weapon,
-	type_armor
+	type_armor,
+	type_spell
 ]
 #endregion
 
@@ -42,6 +45,25 @@ const types_equipment = [
 const consumable_value_type_percentage_current = "PercentageCurrent"
 const consumable_value_type_percentage_max = "PercentageMax"
 const consumable_value_type_int = "Int"
+#endregion
+
+#region Attributes
+const attribute_str = "Strenght"
+const attribute_dex = "Dexterity"
+const attribute_vig = "Vigor"
+const attribute_end = "Endurance"
+const attribute_wis = "Wisdom"
+const attribute_int = "Intelligence"
+const attribute_fai = "Faith"
+const attributes = [
+	attribute_str,
+	attribute_dex,
+	attribute_vig,
+	attribute_end,
+	attribute_wis,
+	attribute_int,
+	attribute_fai
+]
 #endregion
 
 #region Resource Bars
@@ -59,6 +81,14 @@ const state_falling = "Falling"
 const state_landing = "Landing"
 const state_attack = "Attack"
 const state_exhausted = "Exhausted"
+const state_casting = "Spellcasting"
+#endregion
+
+#region Casting Types
+const casting_default = "Casting_Default"
+const casting_shoot = "Casting_Shoot"
+const casting_raise = "Casting_Raise"
+const casting_long = "Casting_Long"
 #endregion
 
 #region Control Mappings

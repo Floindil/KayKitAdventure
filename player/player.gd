@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+#region Variables
 # State vars
 var can_move := true
 var speed := 5
@@ -8,17 +9,23 @@ var sprint: bool = false
 var sneak: bool = false
 var vulnerable := false
 
+# Moveset vars
 var moveset_fist: Moveset = load("res://assets/items/equipment/movesets/fist.tres")
-
-@export var two_handed := false
-@export var moveset: Moveset = moveset_fist
-@export var dir: Vector3
+var two_handed := false
+var moveset: Moveset = moveset_fist
+var spellcast: bool = false
+var cast_moveset: String
+var attunement_slots: int = 1
+var attuned_spells: Array[Spell] = []
+var current_spell: int = 0
 
 # Gameplay vars
+var dir: Vector3
 var rotation_speed := 5.0
 var mouse_sensitivity := 0.01
 var in_menu: bool = false
 var dialog_lock: bool = false
+#endregion
 
 #region Linked Nodes
 @onready var inventory: Inventory = $Inventory
@@ -149,10 +156,41 @@ func _test_action() -> void:
 	health_potion.amount = 5
 	self.inventory.add_item(health_potion)
 	self.inventory.add_item(health_potion)
+	
+	var staff: EquipmentItem = load("res://assets/items/equipment/weapons/staff.tres")
+	self.inventory.add_item(staff)
+	
+	var heal: Spell = load("res://assets/items/equipment/spells/basic_heal.tres")
+	self.attune_spell(heal)
+	self.cycle_spell(0)
+	
+	var hb: ValueBar = get_node("ResourceBars/Health")
+	hb.update(-50)
 
 func use_consumable(item: ConsumableItem) -> void:
 	inventory.remove_item(item)
 	item.run(self, item)
+
+func attune_spell(spell: Spell) -> void:
+	if len(attuned_spells) <= attunement_slots:
+		attuned_spells.append(spell)
+
+func cycle_spell(direction: int = 1) -> void:
+	current_spell += direction
+	if current_spell >= len(attuned_spells):
+		current_spell = 0
+	elif current_spell < 0:
+		current_spell = len(attuned_spells) -1
+
+	var spell: Spell = get_current_spell()
+	if spell:
+		cast_moveset = spell.cast_moveset
+
+func get_current_spell() -> Spell:
+	var spell: Spell = null
+	if len(attuned_spells) > 0:
+		spell = attuned_spells[current_spell]
+	return spell
 
 func equip(item: EquipmentItem, secondary_slot: int = 0) -> void:
 	var slot: String = item.primary_slot
@@ -164,7 +202,7 @@ func equip(item: EquipmentItem, secondary_slot: int = 0) -> void:
 	equipment.equip(item, secondary_slot)
 	inventory.remove_item(item)
 	_update_equipment_slot(slot, item)
-	
+
 func unequip(slot: String) -> void:
 	var item: EquipmentItem = equipment.get_item(slot)
 	if item:
@@ -180,7 +218,7 @@ func _update_equipment_slot(slot: String, item: EquipmentItem) -> void:
 		node.remove_child(child)
 		if slot == StaticNames.slot_mainhand:
 			moveset = moveset_fist
-			
+
 	if item:
 		var item_scene: PackedScene = load(item.asset_path)
 		var item_instance = item_scene.instantiate()

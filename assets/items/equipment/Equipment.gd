@@ -22,3 +22,5 @@ var primary_slot: String
 	StaticNames.slot_offhand
 	)
 var secondary_slot: String
+@export var req_params: Array[ReqParam] = []
+@export var level: int = 0

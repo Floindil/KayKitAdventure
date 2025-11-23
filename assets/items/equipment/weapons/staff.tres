@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=6 format=3 uid="uid://c1bs5pmylatv5"]
+
+[ext_resource type="Resource" uid="uid://chl4faxj5djyi" path="res://assets/items/equipment/movesets/spellcasting.tres" id="1_2j4e2"]
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="1_m5l6v"]
+[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_wgxm1"]
+[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_2j4e2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct8a1"]
+atlas = ExtResource("1_wgxm1")
+region = Rect2(192, 192, 64, 64)
+
+[resource]
+script = ExtResource("2_2j4e2")
+moveset = ExtResource("1_2j4e2")
+primary_slot = "MainHand"
+secondary_slot = "OffHand"
+req_params = Array[ExtResource("1_m5l6v")]([])
+level = 0
+type = "Weapon"
+name = "Wizards Staff"
+asset_path = "res://assets/items/equipment/weapons/Staff.tscn"
+icon = SubResource("AtlasTexture_ct8a1")
+amount = 1
+metadata/_custom_type_script = "uid://dqchklt1qob3h"

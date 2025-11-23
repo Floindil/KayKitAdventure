@@ -5,7 +5,8 @@ class_name Item
 	StaticNames.type_weapon,
 	StaticNames.type_armor,
 	StaticNames.type_consumables,
-	StaticNames.type_key
+	StaticNames.type_key,
+	StaticNames.type_spell
 	)
 var type: String
 @export var name: String

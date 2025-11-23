@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=7 format=3 uid="uid://cfp55ttag6moi"]
+
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="1_dlvga"]
+[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_n6g2k"]
+[ext_resource type="Resource" uid="uid://chl4faxj5djyi" path="res://assets/items/equipment/movesets/spellcasting.tres" id="2_gxqjm"]
+[ext_resource type="Script" uid="uid://cb87rlwcfarp1" path="res://assets/items/equipment/spells/spell.gd" id="2_rvxjb"]
+[ext_resource type="Script" uid="uid://cbvuq4t7ebu2u" path="res://assets/items/equipment/spells/scripts/spell_value_bar_change.gd" id="5_gxqjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgs0n"]
+atlas = ExtResource("1_n6g2k")
+region = Rect2(448, 384, 64, 64)
+
+[resource]
+script = ExtResource("2_rvxjb")
+cast_moveset = "Casting_Raise"
+cast_amount = 5
+spell_script = ExtResource("5_gxqjm")
+value_type = "PercentageMax"
+value_bar_name = "Health"
+value = 20
+moveset = ExtResource("2_gxqjm")
+primary_slot = ""
+secondary_slot = ""
+req_params = Array[ExtResource("1_dlvga")]([])
+level = 0
+type = "Spell"
+name = "Healing Word"
+asset_path = ""
+icon = SubResource("AtlasTexture_wgs0n")
+amount = 1
+metadata/_custom_type_script = "uid://cb87rlwcfarp1"

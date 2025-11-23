@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_st248"]
 [ext_resource type="Resource" uid="uid://dsba60pewagn4" path="res://assets/items/equipment/movesets/straight_sword.tres" id="2_m478f"]
-[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/Equipment.gd" id="2_mfoxm"]
+[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_mfoxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_st248"]
 atlas = ExtResource("1_st248")

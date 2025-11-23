@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Moveset" load_steps=2 format=3 uid="uid://chl4faxj5djyi"]
+
+[ext_resource type="Script" uid="uid://cglyr31iw823n" path="res://assets/items/equipment/moveset.gd" id="1_sw5r0"]
+
+[resource]
+script = ExtResource("1_sw5r0")
+name = "Spellcasting"
+can_block = true
+combo_count = 1
+combo_costs = Array[int]([100])
+metadata/_custom_type_script = "uid://cglyr31iw823n"
