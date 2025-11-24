@@ -161,6 +161,7 @@ func _test_action() -> void:
 	self.inventory.add_item(staff)
 	
 	var heal: Spell = load("res://assets/items/equipment/spells/basic_heal.tres")
+	self.inventory.add_item(heal)
 	self.attune_spell(heal)
 	self.cycle_spell(0)
 	
@@ -220,8 +221,7 @@ func _update_equipment_slot(slot: String, item: EquipmentItem) -> void:
 			moveset = moveset_fist
 
 	if item:
-		var item_scene: PackedScene = load(item.asset_path)
-		var item_instance = item_scene.instantiate()
+		var item_instance = item.instantiate()
 		node.add_child(item_instance)
 		if item.moveset:
 			moveset = item.moveset

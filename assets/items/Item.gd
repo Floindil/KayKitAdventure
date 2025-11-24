@@ -10,6 +10,12 @@ class_name Item
 	)
 var type: String
 @export var name: String
-@export var asset_path: String
+@export var model: PackedScene
 @export var icon: AtlasTexture
 @export var amount: int = 1
+
+func instantiate() -> Node
+	var scene: Node = null
+	if model:
+		scene = model.instantiate()
+	return scene

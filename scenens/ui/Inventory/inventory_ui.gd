@@ -186,10 +186,14 @@ func cancel() -> void:
 #region Equipment
 func display_equipment() -> void:
 	var slots: Dictionary = player.equipment.slots
-	var eq_slots_path = "CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer"
+	var eq_slots_path = "CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer/HBoxContainer"
 	for slot in slots:
 		var item: Item = slots.get(slot)
 		if item:
+			if slot in [StaticNames.slot_mainhand, StaticNames.slot_offhand]:
+				eq_slots_path += "/Hands"
+			elif item.type == StaticNames.type_spell:
+				eq_slots_path += "/AttunedSpells"
 			var eq_slot: Slot = get_node(eq_slots_path + "/%s" % slot)
 			eq_slot.set_item(item)
 #endregion

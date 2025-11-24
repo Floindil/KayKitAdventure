@@ -1,14 +1,12 @@
 extends State
 
-var gravity := ProjectSettings.get_setting("physics/3d/default_gravity") as float
-
 func enter(_player: Player):
 	_player.can_move = false
 	_player.vulnerable = false
 
 func run(_delta: float, _player: Player):
 	if not _player.is_on_floor():
-		_player.velocity.y -= gravity * _delta
+		_player.velocity.y -= StaticValues.gravity * _delta
 	else:
 		if _player.velocity.y < 0.0:
 			_player.velocity.y = 0.0

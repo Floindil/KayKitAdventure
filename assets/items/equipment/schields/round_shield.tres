@@ -15,6 +15,6 @@ primary_slot = "OffHand"
 secondary_slot = ""
 type = "Weapon"
 name = "Round Shield"
-asset_path = "res://assets/items/equipment/schields/RoundShield.tscn"
+model = ExtResource("1_74bep")
 icon = SubResource("AtlasTexture_gh81n")
 metadata/_custom_type_script = "uid://clfui03nj2861"

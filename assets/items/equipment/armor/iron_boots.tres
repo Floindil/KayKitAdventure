@@ -15,6 +15,6 @@ primary_slot = "Boots"
 secondary_slot = ""
 type = "Armor"
 name = "Iron Boots"
-asset_path = "res://assets/items/equipment/armor/iron_boots.tscn"
+model = ExtResource("3_014rb")
 icon = SubResource("AtlasTexture_xl834")
 metadata/_custom_type_script = "uid://clfui03nj2861"

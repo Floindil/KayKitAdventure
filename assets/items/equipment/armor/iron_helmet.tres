@@ -15,6 +15,6 @@ primary_slot = "Helmet"
 secondary_slot = ""
 type = "Armor"
 name = "Iron Helmet"
-asset_path = "res://assets/items/equipment/armor/iron_helmet.tscn"
+model = ExtResource("1_tt6ml")
 icon = SubResource("AtlasTexture_3qo00")
 metadata/_custom_type_script = "uid://clfui03nj2861"

@@ -15,6 +15,6 @@ primary_slot = "Greaves"
 secondary_slot = ""
 type = "Armor"
 name = "Iron Greaves"
-asset_path = "res://assets/items/equipment/armor/iron_greaves.tscn"
+model = ExtResource("3_1r6tm")
 icon = SubResource("AtlasTexture_cshus")
 metadata/_custom_type_script = "uid://clfui03nj2861"

@@ -140,10 +140,16 @@ layout_mode = 2
 [node name="Boots" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
-[node name="MainHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+[node name="Hands" type="HBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
-[node name="OffHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+[node name="MainHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer/Hands" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="OffHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer/Hands" instance=ExtResource("5_f6fl8")]
+layout_mode = 2
+
+[node name="AttunedSpells" type="HBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
 [node name="ItemContext" parent="." instance=ExtResource("5_wgv8w")]
