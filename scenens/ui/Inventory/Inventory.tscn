@@ -21,6 +21,12 @@ scene = ExtResource("7_hopkd")
 text = "Equip"
 metadata/_custom_type_script = "uid://bwi6lqva43ka7"
 
+[sub_resource type="Resource" id="Resource_attn1"]
+script = ExtResource("6_wgv8w")
+scene = ExtResource("7_hopkd")
+text = "Attune"
+metadata/_custom_type_script = "uid://bwi6lqva43ka7"
+
 [sub_resource type="Resource" id="Resource_pobrs"]
 script = ExtResource("6_wgv8w")
 scene = ExtResource("7_hopkd")
@@ -147,6 +153,6 @@ offset_left = 629.0
 offset_top = 593.0
 offset_right = 866.0
 offset_bottom = 758.0
-options = Array[ExtResource("6_wgv8w")]([SubResource("Resource_w1eci"), SubResource("Resource_3xpoe"), SubResource("Resource_pobrs"), SubResource("Resource_hopkd")])
+options = Array[ExtResource("6_wgv8w")]([SubResource("Resource_w1eci"), SubResource("Resource_3xpoe"), SubResource("Resource_attn1"), SubResource("Resource_pobrs"), SubResource("Resource_hopkd")])
 
 [connection signal="tab_button_pressed" from="CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_button_pressed"]

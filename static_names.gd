@@ -23,21 +23,21 @@ const slots = {
 
 #region Item Types
 const type_weapon = "Weapon"
+const type_spell = "Spell"
 const type_armor = "Armor"
 const type_consumables = "Consumable"
 const type_key = "Key"
-const type_spell = "Spell"
 const types = [
 	type_weapon,
+	type_spell,
 	type_armor,
 	type_consumables,
-	type_key,
-	type_spell
+	type_key
 	]
 const types_equipment = [
 	type_weapon,
-	type_armor,
-	type_spell
+	type_spell,
+	type_armor
 ]
 #endregion
 

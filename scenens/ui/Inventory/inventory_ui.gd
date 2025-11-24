@@ -136,6 +136,12 @@ func _set_up_item_context_menu(item: Item) -> void:
 			else:
 				item_context.container.remove_child(option)
 
+		elif option.text == "Attune":
+			if item.type == StaticNames.type_spell:
+				option.set_function(attune)
+			else:
+				item_context.container.remove_child(option)
+
 		elif option.text == "Discard":
 			option.set_function(discard)
 
@@ -156,6 +162,15 @@ func equip() -> void:
 		display_inventory_type()
 		display_equipment()
 		toggle_player_lock = true
+
+func attune() -> void:
+	var item: Item = get_selected_item()
+	var atn_slots: int = player.attunement_slots
+	var atn_spells: Array[Spell] = player.attuned_spells
+	if atn_slots > 0:
+		if len(atn_spells) >= atn_slots:
+			atn_spells.pop_at(0)
+		atn_spells.append(item)
 	
 func discard() -> void:
 	var item: Item = get_selected_item()
