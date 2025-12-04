@@ -1,20 +1,23 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://c4ws86im4nxx3"]
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=6 format=3 uid="uid://c4ws86im4nxx3"]
 
-[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_esrio"]
-[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_67wsl"]
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="1_u7dey"]
+[ext_resource type="PackedScene" uid="uid://cdy6ic6n43bk8" path="res://assets/items/equipment/armor/iron_helmet.tscn" id="2_u7dey"]
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="3_r1ogt"]
+[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="4_ges6u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3qo00"]
-atlas = ExtResource("1_esrio")
-region = Rect2(960, 192, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pyop"]
+atlas = ExtResource("1_u7dey")
+region = Rect2(896, 7616, 64, 64)
 
 [resource]
-script = ExtResource("2_67wsl")
-moveset = ""
-amount = 1
+script = ExtResource("4_ges6u")
 primary_slot = "Helmet"
 secondary_slot = ""
+req_params = Array[ExtResource("3_r1ogt")]([])
+level = 0
 type = "Armor"
 name = "Iron Helmet"
-model = ExtResource("1_tt6ml")
-icon = SubResource("AtlasTexture_3qo00")
-metadata/_custom_type_script = "uid://clfui03nj2861"
+model = ExtResource("2_u7dey")
+icon = SubResource("AtlasTexture_7pyop")
+amount = 1
+metadata/_custom_type_script = "uid://dqchklt1qob3h"

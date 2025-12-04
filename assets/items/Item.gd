@@ -14,7 +14,7 @@ var type: String
 @export var icon: AtlasTexture
 @export var amount: int = 1
 
-func instantiate() -> Node
+func instantiate() -> Node:
 	var scene: Node = null
 	if model:
 		scene = model.instantiate()

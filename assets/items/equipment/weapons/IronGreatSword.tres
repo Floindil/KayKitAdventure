@@ -1,21 +1,25 @@
-[gd_resource type="Resource" script_class="EquipmentItem" load_steps=5 format=3 uid="uid://btd15ckqedsfw"]
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=7 format=3 uid="uid://btd15ckqedsfw"]
 
-[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_nsxpu"]
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="1_uptj5"]
 [ext_resource type="Resource" uid="uid://cuh6fqrspejd4" path="res://assets/items/equipment/movesets/great_sword.tres" id="2_liv74"]
+[ext_resource type="PackedScene" uid="uid://btubd1mvlrxq3" path="res://assets/items/equipment/weapons/2h_sword.tscn" id="2_uptj5"]
 [ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_wael5"]
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="3_uptj5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_51c77"]
-atlas = ExtResource("1_nsxpu")
-region = Rect2(512, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pyop"]
+atlas = ExtResource("1_uptj5")
+region = Rect2(896, 5760, 64, 64)
 
 [resource]
 script = ExtResource("2_wael5")
 moveset = ExtResource("2_liv74")
 primary_slot = "MainHand"
 secondary_slot = ""
+req_params = Array[ExtResource("3_uptj5")]([])
+level = 0
 type = "Weapon"
 name = "Iron Greatsword"
-model = ExtResource("1_gr8pn")
-icon = SubResource("AtlasTexture_51c77")
+model = ExtResource("2_uptj5")
+icon = SubResource("AtlasTexture_7pyop")
 amount = 1
-metadata/_custom_type_script = "uid://clfui03nj2861"
+metadata/_custom_type_script = "uid://dqchklt1qob3h"

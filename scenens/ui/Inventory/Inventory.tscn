@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgeeiucebrmy6"]
+[gd_scene load_steps=14 format=3 uid="uid://cgeeiucebrmy6"]
 
 [ext_resource type="Script" uid="uid://bnftk58wholsd" path="res://scenens/ui/Inventory/inventory_ui.gd" id="1_wpo16"]
 [ext_resource type="Theme" uid="uid://co05eowdfhtif" path="res://scenens/ui/theme.tres" id="1_ygq7k"]
@@ -9,31 +9,31 @@
 [ext_resource type="Script" uid="uid://bwi6lqva43ka7" path="res://scenens/ui/ContextMenu/context_option_data.gd" id="6_wgv8w"]
 [ext_resource type="PackedScene" uid="uid://20ad6syuxjna" path="res://scenens/ui/ContextMenu/SelectableOption.tscn" id="7_hopkd"]
 
-[sub_resource type="Resource" id="Resource_w1eci"]
+[sub_resource type="Resource" id="Resource_hopkd"]
 script = ExtResource("6_wgv8w")
 scene = ExtResource("7_hopkd")
 text = "Use"
 metadata/_custom_type_script = "uid://bwi6lqva43ka7"
 
-[sub_resource type="Resource" id="Resource_3xpoe"]
-script = ExtResource("6_wgv8w")
-scene = ExtResource("7_hopkd")
-text = "Equip"
-metadata/_custom_type_script = "uid://bwi6lqva43ka7"
-
-[sub_resource type="Resource" id="Resource_attn1"]
+[sub_resource type="Resource" id="Resource_p5pup"]
 script = ExtResource("6_wgv8w")
 scene = ExtResource("7_hopkd")
 text = "Attune"
 metadata/_custom_type_script = "uid://bwi6lqva43ka7"
 
-[sub_resource type="Resource" id="Resource_pobrs"]
+[sub_resource type="Resource" id="Resource_htjrc"]
+script = ExtResource("6_wgv8w")
+scene = ExtResource("7_hopkd")
+text = "Equip"
+metadata/_custom_type_script = "uid://bwi6lqva43ka7"
+
+[sub_resource type="Resource" id="Resource_gn0j0"]
 script = ExtResource("6_wgv8w")
 scene = ExtResource("7_hopkd")
 text = "Discard"
 metadata/_custom_type_script = "uid://bwi6lqva43ka7"
 
-[sub_resource type="Resource" id="Resource_hopkd"]
+[sub_resource type="Resource" id="Resource_45mbx"]
 script = ExtResource("6_wgv8w")
 scene = ExtResource("7_hopkd")
 text = "Cancel"
@@ -140,7 +140,7 @@ layout_mode = 2
 [node name="Boots" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
-[node name="Hands" type="HBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+[node name="Hands" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
 [node name="MainHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer/Hands" instance=ExtResource("5_f6fl8")]
@@ -149,7 +149,7 @@ layout_mode = 2
 [node name="OffHand" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer/Hands" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
-[node name="AttunedSpells" type="HBoxContainer" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
+[node name="AttunedSpells" parent="CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer" instance=ExtResource("5_f6fl8")]
 layout_mode = 2
 
 [node name="ItemContext" parent="." instance=ExtResource("5_wgv8w")]
@@ -159,6 +159,7 @@ offset_left = 629.0
 offset_top = 593.0
 offset_right = 866.0
 offset_bottom = 758.0
-options = Array[ExtResource("6_wgv8w")]([SubResource("Resource_w1eci"), SubResource("Resource_3xpoe"), SubResource("Resource_attn1"), SubResource("Resource_pobrs"), SubResource("Resource_hopkd")])
+options_data = Array[ExtResource("6_wgv8w")]([SubResource("Resource_hopkd"), SubResource("Resource_p5pup"), SubResource("Resource_htjrc"), SubResource("Resource_gn0j0"), SubResource("Resource_45mbx")])
+available_options = Array[int]([0, 1, 2, 3, 4])
 
 [connection signal="tab_button_pressed" from="CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_button_pressed"]

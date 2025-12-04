@@ -1,20 +1,23 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://bdlr2c6mwrppx"]
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=6 format=3 uid="uid://bdlr2c6mwrppx"]
 
-[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_nxus7"]
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="1_q3frl"]
 [ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_fd8ay"]
+[ext_resource type="PackedScene" uid="uid://eeilwt13ngoa" path="res://assets/items/equipment/armor/iron_boots.tscn" id="2_q3frl"]
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="3_00jn0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xl834"]
-atlas = ExtResource("1_nxus7")
-region = Rect2(640, 384, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pyop"]
+atlas = ExtResource("1_q3frl")
+region = Rect2(896, 7744, 64, 64)
 
 [resource]
 script = ExtResource("2_fd8ay")
-moveset = ""
-amount = 1
 primary_slot = "Boots"
 secondary_slot = ""
+req_params = Array[ExtResource("3_00jn0")]([])
+level = 0
 type = "Armor"
 name = "Iron Boots"
-model = ExtResource("3_014rb")
-icon = SubResource("AtlasTexture_xl834")
-metadata/_custom_type_script = "uid://clfui03nj2861"
+model = ExtResource("2_q3frl")
+icon = SubResource("AtlasTexture_7pyop")
+amount = 1
+metadata/_custom_type_script = "uid://dqchklt1qob3h"

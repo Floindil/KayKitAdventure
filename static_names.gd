@@ -36,7 +36,6 @@ const types = [
 	]
 const types_equipment = [
 	type_weapon,
-	type_spell,
 	type_armor
 ]
 #endregion

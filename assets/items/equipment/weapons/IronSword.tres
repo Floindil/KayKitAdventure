@@ -1,21 +1,25 @@
-[gd_resource type="Resource" script_class="EquipmentItem" load_steps=5 format=3 uid="uid://c6brgwo2xuic6"]
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=7 format=3 uid="uid://c6brgwo2xuic6"]
 
-[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_st248"]
-[ext_resource type="Resource" uid="uid://dsba60pewagn4" path="res://assets/items/equipment/movesets/straight_sword.tres" id="2_m478f"]
-[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_mfoxm"]
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="1_uetov"]
+[ext_resource type="PackedScene" uid="uid://btjpglr0cqvws" path="res://assets/items/equipment/weapons/1HSword.tscn" id="2_uetov"]
+[ext_resource type="Resource" uid="uid://dsba60pewagn4" path="res://assets/items/equipment/movesets/straight_sword.tres" id="3_uetov"]
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="4_4rcbj"]
+[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="5_sk2v2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_st248"]
-atlas = ExtResource("1_st248")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pyop"]
+atlas = ExtResource("1_uetov")
+region = Rect2(384, 5760, 64, 64)
 
 [resource]
-script = ExtResource("2_mfoxm")
-moveset = ExtResource("2_m478f")
+script = ExtResource("5_sk2v2")
+moveset = ExtResource("3_uetov")
 primary_slot = "MainHand"
-secondary_slot = "OffHand"
+secondary_slot = ""
+req_params = Array[ExtResource("4_4rcbj")]([])
+level = 0
 type = "Weapon"
 name = "Iron Sword"
-model = ExtResource("1_j8fth")
-icon = SubResource("AtlasTexture_st248")
+model = ExtResource("2_uetov")
+icon = SubResource("AtlasTexture_7pyop")
 amount = 1
-metadata/_custom_type_script = "uid://clfui03nj2861"
+metadata/_custom_type_script = "uid://dqchklt1qob3h"

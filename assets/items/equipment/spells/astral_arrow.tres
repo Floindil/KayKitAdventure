@@ -1,20 +1,21 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://bxn0bctumh6b7"]
 
-[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="1_n1ph1"]
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="1_n1ph1"]
 [ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="1_wm6cg"]
 [ext_resource type="Resource" uid="uid://chl4faxj5djyi" path="res://assets/items/equipment/movesets/spellcasting.tres" id="2_68sku"]
 [ext_resource type="Script" uid="uid://cb87rlwcfarp1" path="res://assets/items/equipment/spells/spell.gd" id="2_d2jtq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h272i"]
 atlas = ExtResource("1_n1ph1")
-region = Rect2(576, 192, 64, 64)
+region = Rect2(64, 4032, 64, 64)
 
 [resource]
 script = ExtResource("2_d2jtq")
-cast_moveset = 3
+cast_moveset = ""
 cast_amount = 10
 value_type = ""
 value_bar_name = ""
+value = 10
 moveset = ExtResource("2_68sku")
 primary_slot = ""
 secondary_slot = ""
@@ -22,7 +23,6 @@ req_params = Array[ExtResource("1_wm6cg")]([])
 level = 0
 type = ""
 name = "Astral Arrow"
-model = null
 icon = SubResource("AtlasTexture_h272i")
 amount = 1
 metadata/_custom_type_script = "uid://cb87rlwcfarp1"

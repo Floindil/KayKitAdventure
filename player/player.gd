@@ -162,7 +162,6 @@ func _test_action() -> void:
 	
 	var heal: Spell = load("res://assets/items/equipment/spells/basic_heal.tres")
 	self.inventory.add_item(heal)
-	self.attune_spell(heal)
 	self.cycle_spell(0)
 	
 	var hb: ValueBar = get_node("ResourceBars/Health")

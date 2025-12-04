@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ConsumableItem" load_steps=5 format=3 uid="uid://b5drem8blc1kv"]
 
 [ext_resource type="Script" uid="uid://bdk2hw4hfbp4o" path="res://assets/items/consumables/scripts/item_value_bar_change.gd" id="1_1uy48"]
-[ext_resource type="Texture2D" uid="uid://csihy5e40s8ni" path="res://assets/items/icons64x64.png" id="2_e080i"]
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="2_1uy48"]
 [ext_resource type="Script" uid="uid://vnpylbfseg6e" path="res://assets/items/consumables/consumable.gd" id="3_rec3k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbqw6"]
-atlas = ExtResource("2_e080i")
-region = Rect2(0, 384, 64, 64)
+atlas = ExtResource("2_1uy48")
+region = Rect2(512, 1024, 64, 64)
 
 [resource]
 script = ExtResource("3_rec3k")
@@ -16,7 +16,6 @@ value_type = "Int"
 value_bar_name = "Health"
 type = "Consumable"
 name = "Health Potion"
-asset_path = ""
 icon = SubResource("AtlasTexture_nbqw6")
 amount = 1
 metadata/_custom_type_script = "uid://vnpylbfseg6e"

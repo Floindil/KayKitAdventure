@@ -8,4 +8,4 @@ const walk_speed: int = 5
 const sprint_speed: int = 8
 const sneak_speed: int = 2
 
-const gravity := ProjectSettings.get_setting("physics/3d/default_gravity") as float
+const gravity: float = 9.8

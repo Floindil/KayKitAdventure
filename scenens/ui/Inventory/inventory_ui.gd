@@ -2,13 +2,14 @@ extends Control
 
 @onready var InventoryList: VBoxContainer = $CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer/InventorySizeControl/InventoryList
 @onready var tab_bar: TabBar = $CenterContainer/MainSizeControl/hDivider/InventoryListMargin/VBoxContainer/TabBar
-@onready var item_context: ItemContext = $ItemContext
+@onready var item_context: ContextMenu = $ItemContext
 @onready var SelectedType: int = 0
 @onready var player: Player = get_node("../Player")
 
 var selected_item: int = 0
 var type_inventory: Array
 var toggle_player_lock: bool = false
+var eq_vbox_path = "CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer"
 
 func _ready() -> void:
 	player.toggle_menu.connect(self._on_toggle_menu)
@@ -53,6 +54,7 @@ func _on_toggle_menu(in_menu: bool) -> void:
 	if self.visible:
 		self.display_inventory_type()
 		self.display_equipment()
+		self.set_up_attunement_slots()
 #endregion
 
 #region Item Inventory
@@ -109,6 +111,7 @@ func _clear_inventory_list() -> void:
 func open_item_context_menu() -> void:
 	if len(InventoryList.get_children()) > 0:
 		item_context.visible = true
+		item_context.current_selection_index = 0
 		item_context.current_selection = 0
 
 		var item: Item = get_selected_item()
@@ -122,32 +125,39 @@ func open_item_context_menu() -> void:
 		item_context.toggle_highlight_visibility()
 
 func _set_up_item_context_menu(item: Item) -> void:
-	for option: SelectableOption in item_context.container.get_children():
+	var options: Array[SelectableOption] = item_context.get_selectable_options()
+	for option: SelectableOption in options:
 		option.highlight.visible = false
 		if option.text == "Use":
 			if item.type == StaticNames.type_consumables:
+				item_context.set_option_visibility(true, option)
 				option.set_function(use_item)
 			else:
-				item_context.container.remove_child(option)
+				item_context.set_option_visibility(false, option)
 
 		elif option.text == "Equip": 
 			if item.type in StaticNames.types_equipment:
+				item_context.set_option_visibility(true, option)
 				option.set_function(equip)
 			else:
-				item_context.container.remove_child(option)
+				item_context.set_option_visibility(false, option)
 
 		elif option.text == "Attune":
 			if item.type == StaticNames.type_spell:
+				item_context.set_option_visibility(true, option)
 				option.set_function(attune)
 			else:
-				item_context.container.remove_child(option)
+				item_context.set_option_visibility(false, option)
 
 		elif option.text == "Discard":
+			item_context.set_option_visibility(true, option)
 			option.set_function(discard)
 
 		elif option.text == "Cancel":
+			item_context.set_option_visibility(true, option)
 			option.set_function(cancel)
 	item_context.reset_size()
+	item_context.set_current_selection()
 
 func use_item() -> void:
 	var item: Item = get_selected_item()
@@ -163,6 +173,25 @@ func equip() -> void:
 		display_equipment()
 		toggle_player_lock = true
 
+func set_up_attunement_slots() -> void:
+	var spell_slots: Node = get_node(eq_vbox_path + "/AttunedSpells")
+
+	for child in spell_slots.get_children():
+		spell_slots.remove_child(child)
+
+	for i in range(player.attunement_slots):
+		var slot: Slot = load("res://scenens/ui/Inventory/Slot.tscn").instantiate()
+		slot.name = "Slot" + str(i)
+		spell_slots.add_child(slot)
+		display_attuned_spell(i)
+		
+func display_attuned_spell(slot_int: int) -> void:
+	var slot: Slot = get_node(eq_vbox_path + "/AttunedSpells/Slot" + str(slot_int))
+	if len(player.attuned_spells) >= slot_int + 1:
+		var attuned_spell: Spell = player.attuned_spells.get(slot_int)
+		if attuned_spell:
+			slot.set_item(attuned_spell)
+
 func attune() -> void:
 	var item: Item = get_selected_item()
 	var atn_slots: int = player.attunement_slots
@@ -171,6 +200,7 @@ func attune() -> void:
 		if len(atn_spells) >= atn_slots:
 			atn_spells.pop_at(0)
 		atn_spells.append(item)
+		display_attuned_spell(0)
 	
 func discard() -> void:
 	var item: Item = get_selected_item()
@@ -186,14 +216,15 @@ func cancel() -> void:
 #region Equipment
 func display_equipment() -> void:
 	var slots: Dictionary = player.equipment.slots
-	var eq_slots_path = "CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer/HBoxContainer"
 	for slot in slots:
+		var eq_slots_path = "CenterContainer/MainSizeControl/hDivider/EquipmentMargin/EquipmentSizeControl/VBoxContainer"
 		var item: Item = slots.get(slot)
 		if item:
 			if slot in [StaticNames.slot_mainhand, StaticNames.slot_offhand]:
 				eq_slots_path += "/Hands"
 			elif item.type == StaticNames.type_spell:
 				eq_slots_path += "/AttunedSpells"
+				slot = "Slot1"
 			var eq_slot: Slot = get_node(eq_slots_path + "/%s" % slot)
 			eq_slot.set_item(item)
 #endregion
