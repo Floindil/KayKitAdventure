@@ -7,6 +7,8 @@ class_name Skeleton
 @export var rotation_speed = 12.0
 @export var mouse_sensivity = 0.01
 
+var aggresive: bool = false
+var target: CharacterBody3D = null
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var jumping = false
 var last_floor = true
@@ -17,6 +19,8 @@ var attacks = [
 	"1H_Melee_Attack_Stab"
 ]
 var actions = [
+	"backoff",
+	"advance",
 	"attack",
 	"strifeleft",
 	"striferight",

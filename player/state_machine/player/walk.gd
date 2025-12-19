@@ -37,8 +37,9 @@ func run(_delta: float, _player: Player):
 	process_mods(_player, previous_mods, current_mods)
 
 func exit(_player: Player):
-	pass
-	
+	var movement_playback: AnimationNodeStateMachinePlayback = _player.anim_tree.get("parameters/movement/playback")
+	movement_playback.travel(&"Start")
+
 func process_mods(player, _previous_mods, _current_mods) -> void:
 	if _previous_mods != _current_mods:
 		if player.sprint:
