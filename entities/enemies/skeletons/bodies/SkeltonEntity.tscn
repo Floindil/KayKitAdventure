@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvfi56d5wd4mb"]
+
+[ext_resource type="Script" uid="uid://ka4530w83715" path="res://entities/entity.gd" id="1_bt8f5"]
+
+[node name="SkeltonEntity" type="CharacterBody3D"]
+script = ExtResource("1_bt8f5")
+metadata/_custom_type_script = "uid://ka4530w83715"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=7 format=3 uid="uid://c2luadauwnvma"]
+
+[ext_resource type="Texture2D" uid="uid://bqlfg1t1nulcr" path="res://assets/items/64x64.png" id="1_o7hv1"]
+[ext_resource type="Script" uid="uid://ldx3vutjw15e" path="res://assets/items/equipment/req_param.gd" id="1_wo1tv"]
+[ext_resource type="PackedScene" uid="uid://b4dcg46c01k3v" path="res://assets/items/equipment/weapons/Fist.tscn" id="2_ak6je"]
+[ext_resource type="Script" uid="uid://dqchklt1qob3h" path="res://assets/items/equipment/equipment.gd" id="2_si4xe"]
+[ext_resource type="Resource" uid="uid://cytihdrh6gsp8" path="res://assets/items/equipment/movesets/fist.tres" id="3_7thdq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7w71"]
+atlas = ExtResource("1_o7hv1")
+region = Rect2(384, 2624, 64, 64)
+
+[resource]
+script = ExtResource("2_si4xe")
+moveset = ExtResource("3_7thdq")
+primary_slot = "MainHand"
+secondary_slot = ""
+req_params = Array[ExtResource("1_wo1tv")]([])
+level = 0
+type = "Weapon"
+name = "Fist"
+model = ExtResource("2_ak6je")
+icon = SubResource("AtlasTexture_v7w71")
+amount = 1
+metadata/_custom_type_script = "uid://dqchklt1qob3h"

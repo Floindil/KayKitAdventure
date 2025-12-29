@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://btubd1mvlrxq3"]
+[gd_scene load_steps=8 format=4 uid="uid://btubd1mvlrxq3"]
 
 [ext_resource type="Texture2D" uid="uid://bikviirq6ddap" path="res://assets/adventurers/Knight_knight_texture.png" id="1_gr8pn"]
+[ext_resource type="Script" uid="uid://dsl6ekw33whj6" path="res://assets/items/equipment/weapons/weapon.gd" id="2_ubx1l"]
+[ext_resource type="Script" uid="uid://dk56vxrbyuwol" path="res://entities/hitbox.gd" id="3_jp4d0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlix8"]
 resource_name = "knight_texture"
@@ -42,6 +44,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sp27i")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3nhrf"]
+radius = 0.2
+height = 1.5
+
 [node name="2H_Sword" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_oyaa4")
 skeleton = NodePath("")
+script = ExtResource("2_ubx1l")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 2147483648
+collision_mask = 2147483648
+script = ExtResource("3_jp4d0")
+damage = 10
+metadata/_custom_type_script = "uid://dk56vxrbyuwol"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("CapsuleShape3D_3nhrf")

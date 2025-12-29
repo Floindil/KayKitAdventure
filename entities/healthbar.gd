@@ -1,14 +1,14 @@
 extends Node3D
 class_name Healthbar
 
-@onready var parent = Utilities.get_local_scene_root(get_parent())
+@onready var parent = Utilities.get_entity_root(get_parent())
 @onready var health_node: ValueBar = parent.get_node("ResourceBars/Health")
 @onready var health_bar: TextureProgressBar = $SubViewport/Healthbar/progress
 @onready var camera: Camera3D = get_tree().current_scene.get_node("Player/SpringArm/Camera")
 
 func _ready() -> void:
-	for node in parent.get_children():
-		print(node.name)
+	#for node in parent.get_children():
+		#print(node.name)
 	health_node.connect("bar_value_changed", update_health_bar)
 
 func _process(_delta: float) -> void:

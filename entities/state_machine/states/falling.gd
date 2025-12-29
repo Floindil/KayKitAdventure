@@ -1,18 +1,18 @@
 extends State
 
-func enter(_player: CharacterBody3D):
-	_player.can_move = false
-	_player.vulnerable = false
+func enter(_entity: Entity):
+	_entity.can_move = false
+	_entity.vulnerable = false
 
-func run(_delta: float, _player: CharacterBody3D):
-	if not _player.is_on_floor():
-		_player.velocity.y -= StaticValues.gravity * _delta
+func run(_delta: float, _entity: Entity):
+	if not _entity.is_on_floor():
+		_entity.velocity.y -= StaticValues.gravity * _delta
 	else:
-		if _player.velocity.y < 0.0:
-			_player.velocity.y = 0.0
+		if _entity.velocity.y < 0.0:
+			_entity.velocity.y = 0.0
 		change_state(StaticNames.state_landing)
 
-func exit(_player: CharacterBody3D):
+func exit(_entity: Entity):
 	pass
 	
 func change_state(new_state: String) -> void:

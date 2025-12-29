@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://cl5nggv4tbl3a"]
+[gd_scene load_steps=8 format=4 uid="uid://cl5nggv4tbl3a"]
 
 [ext_resource type="Texture2D" uid="uid://cq0fnylplcx" path="res://assets/adventurers/Mage_mage_texture.png" id="1_eup18"]
+[ext_resource type="Script" uid="uid://dsl6ekw33whj6" path="res://assets/items/equipment/weapons/weapon.gd" id="2_ex441"]
+[ext_resource type="Script" uid="uid://dk56vxrbyuwol" path="res://entities/hitbox.gd" id="3_ck21g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1myt"]
 resource_name = "mage_texture"
@@ -42,6 +44,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sh8x3")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvam7"]
+radius = 0.25
+
 [node name="2H_Staff" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_ex441")
 skeleton = NodePath("")
+script = ExtResource("2_ex441")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 2147483648
+collision_mask = 2147483648
+script = ExtResource("3_ck21g")
+damage = 10
+metadata/_custom_type_script = "uid://dk56vxrbyuwol"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_rvam7")

@@ -6,49 +6,49 @@ var walk_speed := StaticValues.walk_speed
 var sprint_speed := StaticValues.sprint_speed
 var sneak_speed := StaticValues.sneak_speed
 
-func enter(_player: CharacterBody3D):
-	super.enter(_player)
+func enter(_entity: Entity):
+	super.enter(_entity)
 	charge_stamina = true
-	_player.can_move = true
-	_player.vulnerable = false
-	_player.speed = walk_speed
-	_player.sprint = false
-	_player.sneak = false
+	_entity.can_move = true
+	_entity.vulnerable = false
+	_entity.speed = walk_speed
+	_entity.sprint = false
+	_entity.sneak = false
 
-func run(_delta: float, _player: CharacterBody3D):
-	super.run(_delta, _player)
+func run(_delta: float, _entity: Entity):
+	super.run(_delta, _entity)
 	
-	previous_mods = [_player.sprint, _player.sneak]
+	previous_mods = [_entity.sprint, _entity.sneak]
 	
-	if _player.velocity.length() <= 0:
+	if _entity.velocity.length() <= 0:
 		self.change_state(StaticNames.state_idle)
 
-	if not _player.in_menu:
-		if not _player.sneak:
-			_player.sprint = Input.is_action_pressed(StaticNames.state_sprint)
-		if not _player.sprint:
-			_player.sneak = Input.is_action_pressed(StaticNames.state_sneak)
+	if not _entity.in_menu:
+		if not _entity.sneak:
+			_entity.sprint = Input.is_action_pressed(StaticNames.state_sprint)
+		if not _entity.sprint:
+			_entity.sneak = Input.is_action_pressed(StaticNames.state_sneak)
 			
-	if _player.sprint:
+	if _entity.sprint:
 		resource_bars.update_bar(StaticNames.bars_stamina, -1)
 	
-	var current_mods = [_player.sprint, _player.sneak]
+	var current_mods = [_entity.sprint, _entity.sneak]
 
-	process_mods(_player, previous_mods, current_mods)
+	process_mods(_entity, previous_mods, current_mods)
 
-func exit(_player: CharacterBody3D):
-	var movement_playback: AnimationNodeStateMachinePlayback = _player.anim_tree.get("parameters/movement/playback")
+func exit(_entity: Entity):
+	var movement_playback: AnimationNodeStateMachinePlayback = _entity.anim_tree.get("parameters/movement/playback")
 	movement_playback.travel(&"Start")
 
-func process_mods(player, _previous_mods, _current_mods) -> void:
+func process_mods(_entity: Entity, _previous_mods, _current_mods) -> void:
 	if _previous_mods != _current_mods:
-		if player.sprint:
-			player.speed = sprint_speed
+		if _entity.sprint:
+			_entity.speed = sprint_speed
 			charge_stamina = false
-		elif player.sneak:
-			player.speed = sneak_speed
+		elif _entity.sneak:
+			_entity.speed = sneak_speed
 		else:
-			player.speed = walk_speed
+			_entity.speed = walk_speed
 			charge_stamina = true
 
 func change_state(new_state: String) -> void:

@@ -1,15 +1,15 @@
 extends State
 
-func enter(_player: CharacterBody3D):
-	super.enter(_player)
+func enter(_entity: Entity):
+	super.enter(_entity)
 	charge_stamina = true
-	_player.can_move = true
-	_player.vulnerable = false
+	_entity.can_move = true
+	_entity.vulnerable = false
 
-func run(_delta: float, _player: CharacterBody3D):
-	super.run(_delta, _player)
-	if _player.velocity.length() > 0:
+func run(_delta: float, _entity: Entity):
+	super.run(_delta, _entity)
+	if _entity.velocity.length() > 0:
 		self.change_state(StaticNames.state_walk)
 		
-func exit(_player: CharacterBody3D):
+func exit(_entity: Entity):
 	pass

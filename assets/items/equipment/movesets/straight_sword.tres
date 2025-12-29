@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Moveset" load_steps=2 format=3 uid="uid://dsba60pewagn4"]
 
-[ext_resource type="Script" uid="uid://cglyr31iw823n" path="res://assets/items/equipment/moveset.gd" id="1_8sdrv"]
+[ext_resource type="Script" uid="uid://cglyr31iw823n" path="res://assets/items/equipment/movesets/moveset.gd" id="1_8sdrv"]
 
 [resource]
 script = ExtResource("1_8sdrv")
@@ -8,4 +8,5 @@ name = "StraightSword"
 can_block = true
 combo_count = 3
 combo_costs = Array[int]([110, 90, 100])
+wind_ups = Array[float]([0.2])
 metadata/_custom_type_script = "uid://cglyr31iw823n"

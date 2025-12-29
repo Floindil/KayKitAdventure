@@ -1,0 +1,63 @@
+[gd_scene load_steps=17 format=3 uid="uid://tlp4yr1cvq2n"]
+
+[ext_resource type="PackedScene" uid="uid://c7qr2d5omejpq" path="res://assets/maps/dungeon.tscn" id="2_7n6i2"]
+[ext_resource type="PackedScene" uid="uid://83fkukns3bev" path="res://entities/player/Player.tscn" id="2_fdcd7"]
+[ext_resource type="PackedScene" uid="uid://cgeeiucebrmy6" path="res://scenens/ui/Inventory/Inventory.tscn" id="3_l2km6"]
+[ext_resource type="PackedScene" uid="uid://bpcf8phodtnjv" path="res://scenens/ui/Player/player_ui.tscn" id="4_k7kwt"]
+[ext_resource type="PackedScene" uid="uid://w177qvh6ob5i" path="res://entities/enemies/skeletons/skeleton.tscn" id="5_tv8ou"]
+[ext_resource type="PackedScene" uid="uid://cusekqpm8eu8k" path="res://entities/enemies/skeletons/bodies/minion.tscn" id="6_6jx87"]
+[ext_resource type="PackedScene" uid="uid://dvng63e10wqma" path="res://entities/enemies/skeletons/bodies/mage.tscn" id="6_pblpe"]
+[ext_resource type="PackedScene" uid="uid://4ey310tn1jer" path="res://entities/enemies/skeletons/bodies/rogue.tscn" id="7_n3fg5"]
+[ext_resource type="PackedScene" uid="uid://day5xbjkt2bpj" path="res://entities/enemies/skeletons/accessories/mage_hat.tscn" id="8_4iuve"]
+[ext_resource type="PackedScene" uid="uid://ds74f24ouctjy" path="res://entities/enemies/skeletons/bodies/warrior.tscn" id="8_v1xop"]
+[ext_resource type="PackedScene" uid="uid://diqysbm45upxb" path="res://entities/enemies/skeletons/accessories/warrior_helmet.tscn" id="9_lbw3n"]
+[ext_resource type="PackedScene" uid="uid://d0th13x3seoup" path="res://entities/enemies/skeletons/accessories/rogue_hood.tscn" id="12_armqo"]
+[ext_resource type="PackedScene" uid="uid://cgvqqf1ulvsh5" path="res://entities/enemies/skeletons/accessories/cape.tscn" id="13_armqo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7n6i2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_fdcd7"]
+sky_material = SubResource("ProceduralSkyMaterial_7n6i2")
+
+[sub_resource type="Environment" id="Environment_qhs2s"]
+background_mode = 2
+sky = SubResource("Sky_fdcd7")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qhs2s")
+
+[node name="Dungeon" parent="." instance=ExtResource("2_7n6i2")]
+
+[node name="Player" parent="." instance=ExtResource("2_fdcd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PlayerUi" parent="." instance=ExtResource("4_k7kwt")]
+
+[node name="InventoryUI" parent="." instance=ExtResource("3_l2km6")]
+visible = false
+
+[node name="SkeletonMinion" parent="." instance=ExtResource("5_tv8ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -6)
+skeleton_body = ExtResource("6_6jx87")
+
+[node name="SkeletonMage" parent="." instance=ExtResource("5_tv8ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
+skeleton_body = ExtResource("6_pblpe")
+skeleton_hat = ExtResource("8_4iuve")
+
+[node name="SkeletonWarrior" parent="." instance=ExtResource("5_tv8ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -6)
+skeleton_body = ExtResource("8_v1xop")
+skeleton_hat = ExtResource("9_lbw3n")
+
+[node name="SkeletonRogue" parent="." instance=ExtResource("5_tv8ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -6)
+skeleton_body = ExtResource("7_n3fg5")
+skeleton_hat = ExtResource("12_armqo")
+skeleton_cape = ExtResource("13_armqo")

@@ -1,23 +1,13 @@
-extends CharacterBody3D
+extends Entity
 class_name Player
 
 #region Variables
-# State vars
-var can_move := true
-var speed := 5
-var sprint: bool = false
-var sneak: bool = false
-var vulnerable := false
 
 # Moveset vars
-var moveset_fist: Moveset = load("res://assets/items/equipment/movesets/fist.tres")
-var two_handed := false
-var moveset: Moveset = moveset_fist
-var spellcast: bool = false
-var cast_moveset: String
 var attunement_slots: int = 1
 var attuned_spells: Array[Spell] = []
 var current_spell: int = 0
+var fist_item: EquipmentItem = preload("res://assets/items/equipment/weapons/fist.tres")
 
 # Gameplay vars
 var dir: Vector3
@@ -31,10 +21,6 @@ var dialog_lock: bool = false
 @onready var inventory: Inventory = $Inventory
 @onready var equipment: Equipment = $Equipment
 @onready var spring_arm: SpringArm3D = $SpringArm
-@onready var model: Node3D = $Rig
-@onready var anim_tree: AnimationTree = $AnimationTree
-@onready var anim_state = anim_tree.get("parameters/movement/playback")
-@onready var statemachine: StateMachine = $StateMachine
 #endregion
 
 # Signals
@@ -42,6 +28,8 @@ signal toggle_menu
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if !moveset:
+		equip(fist_item)
 
 func _on_dialog_toggle(_dialog_lock: bool) -> void:
 	self.dialog_lock = _dialog_lock
@@ -197,7 +185,7 @@ func equip(item: EquipmentItem, secondary_slot: int = 0) -> void:
 	if secondary_slot:
 		slot = item.secondary_slot
 	var previous_item: Item = equipment.get_item(slot)
-	if previous_item:
+	if previous_item and previous_item != fist_item:
 		inventory.add_item(previous_item)
 	equipment.equip(item, secondary_slot)
 	inventory.remove_item(item)
@@ -205,22 +193,26 @@ func equip(item: EquipmentItem, secondary_slot: int = 0) -> void:
 
 func unequip(slot: String) -> void:
 	var item: EquipmentItem = equipment.get_item(slot)
-	if item:
+	if item and item != fist_item:
 		inventory.add_item(item)
 	equipment.unequip(slot)
 	_update_equipment_slot(slot, null)
 
 func _update_equipment_slot(slot: String, item: EquipmentItem) -> void:
-	var node = get_node("Rig/Skeleton3D/%s" % slot)
+	var slot_node = get_node("Rig/Skeleton3D/%s" % slot)
 	if slot == StaticNames.slot_offhand and two_handed:
-		node = get_node("Rig/Skeleton3D/%s" % StaticNames.slot_back)
-	for child in node.get_children():
-		node.remove_child(child)
-		if slot == StaticNames.slot_mainhand:
-			moveset = moveset_fist
+		slot_node = get_node("Rig/Skeleton3D/%s" % StaticNames.slot_back)
+	for child in slot_node.get_children():
+		slot_node.remove_child(child)
+
+	if slot == StaticNames.slot_mainhand and not item:
+		item = fist_item
+		equipment.equip(item, 0)
 
 	if item:
 		var item_instance = item.instantiate()
-		node.add_child(item_instance)
+		slot_node.add_child(item_instance)
 		if item.moveset:
 			moveset = item.moveset
+		if item_instance is Weapon:
+			current_hitbox = item_instance.hitbox

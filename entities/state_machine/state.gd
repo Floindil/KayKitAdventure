@@ -5,14 +5,14 @@ var charge_stamina: bool = false
 var stamina_cost: int
 var resource_bars: ResourceBarController
 
-func enter(_player: CharacterBody3D):
-	resource_bars = _player.get_node("ResourceBars")
+func enter(_entity: Entity):
+	resource_bars = _entity.get_node("ResourceBars")
 
-func run(_delta: float, _player: CharacterBody3D):
+func run(_delta: float, _entity: Entity):
 	if charge_stamina:
 		_charge_stamina()
 
-func exit(_player: CharacterBody3D):
+func exit(_entity: Entity):
 	pass
 	
 func change_state(new_state: String) -> void:
