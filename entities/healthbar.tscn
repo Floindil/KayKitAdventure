@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsxvmagfy7mvy"]
+
+[ext_resource type="Script" uid="uid://byppx63wexlv5" path="res://entities/healthbar.gd" id="1_bl4nv"]
+[ext_resource type="Texture2D" uid="uid://cxdh0adlvnsqk" path="res://assets/ui/progrss_bars/BarV1_Bar.png" id="1_nsoj5"]
+[ext_resource type="Texture2D" uid="uid://cv8dx5n0o023x" path="res://assets/ui/progrss_bars/BarV1_ProgressBarBorder.png" id="2_bl4nv"]
+[ext_resource type="Texture2D" uid="uid://dqx0yhoxody0x" path="res://assets/ui/progrss_bars/BarV5_ProgressBar.png" id="3_uk4j0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nsoj5"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Healthbar" type="Node3D"]
+script = ExtResource("1_bl4nv")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = SubResource("ViewportTexture_nsoj5")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(520, 45)
+
+[node name="Healthbar" type="MarginContainer" parent="SubViewport"]
+offset_right = 520.0
+offset_bottom = 45.0
+
+[node name="progress" type="TextureProgressBar" parent="SubViewport/Healthbar"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_nsoj5")
+texture_over = ExtResource("2_bl4nv")
+texture_progress = ExtResource("3_uk4j0")

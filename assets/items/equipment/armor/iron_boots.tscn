@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ve631llumene" path="res://assets/items/equipment/armor/armor.gd" id="1_m2gwu"]
 [ext_resource type="Texture2D" uid="uid://bikviirq6ddap" path="res://assets/adventurers/Knight_knight_texture.png" id="2_mnqol"]
-[ext_resource type="Skin" uid="uid://dwjnp04rsmnw5" path="res://player/PlayerSkin.tres" id="3_014rb"]
+[ext_resource type="Skin" uid="uid://dwjnp04rsmnw5" path="res://entities/player/PlayerSkin.tres" id="3_014rb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlix8"]
 resource_name = "knight_texture"
