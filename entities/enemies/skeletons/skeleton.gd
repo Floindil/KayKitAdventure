@@ -3,7 +3,7 @@ class_name Skeleton
 
 @export var skeleton_body: PackedScene
 @export var skeleton_hat: PackedScene
-
+@export var skeleton_cape: PackedScene
 
 var aggresive: bool = false
 var target: CharacterBody3D = null
@@ -43,9 +43,17 @@ var count: int = 0
 
 func _ready() -> void:
 	var skeleton: Skeleton3D = get_node("Rig/Skeleton3D")
+	var skeleton_hat_slot: BoneAttachment3D = get_node("Rig/Skeleton3D/Headwear")
+	var skeleton_cape_slot: BoneAttachment3D = get_node("Rig/Skeleton3D/Cape")
 	if skeleton_body:
-		var instance = skeleton_body.instantiate()
-		skeleton.add_child(instance)
+		var body_instance = skeleton_body.instantiate()
+		skeleton.add_child(body_instance)
+	if skeleton_hat:
+		var hat_instance = skeleton_hat.instantiate()
+		skeleton_hat_slot.add_child(hat_instance)
+	if skeleton_cape:
+		var cape_instance = skeleton_cape.instantiate()
+		skeleton_cape_slot.add_child(cape_instance)
 
 func _physics_process(delta: float) -> void:
 	velocity.y += -gravity * delta
